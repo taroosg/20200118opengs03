@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>にほんごプログラミング</title>
+  <style>
+    .right_box {
+      display: flex;
+    }
+
+    img {
+      width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="left_box"></div>
+  <div id="right_box"></div>
+  <p id="result">result</p>
+</body>
+<script>
+  const rand = ~~(Math.random() * (3 - 1 + 1) + 1);
+  document.getElementById('left_box').innerHTML = `<img src="./img/L${rand}.png" alt="" id="l${rand}">`;
+
+  document.getElementById('right_box').innerHTML = `<img src="./img/R1.png" alt="" class="right" id="r1">
+                                                    <img src="./img/R2.png" alt="" class="right" id="r2">
+                                                    <img src="./img/R3.png" alt="" class="right" id="r3">`;
+
+  document.querySelectorAll('.right').forEach(x => addEventListener('click', e => {
+    if (e.target.id.slice(-1) == rand) {
+      document.getElementById('result').innerText = 'OK';
+    } else {
+      document.getElementById('result').innerText = 'NG';
+    }
+  }))
+
+</script>
+
+</html>
